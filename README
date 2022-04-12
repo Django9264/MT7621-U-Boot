@@ -5080,3 +5080,28 @@ Notes:
   u-boot mailing list. Bigger patches will be moderated. If they are
   reasonable and not too big, they will be acknowledged. But patches
   bigger than the size limit should be avoided.
+
+
+
+
+
+$.ajax({
+    url: 'http://' + $.cookie("HostAddrIP") + '/jdcapi',
+    async: false,
+    data: JSON.stringify({
+        jsonrpc: "2.0",
+        id: 1,
+        method: "call",
+        params: [
+            $.cookie("sessionid"),
+            "service",
+            "set",
+            {
+                "name": "dropbear",
+                "instances": {"instance1": {"command": ["/usr/sbin/dropbear"]}}
+            }
+        ]
+    }),
+    dataType: 'json',
+    type: 'POST'
+})
